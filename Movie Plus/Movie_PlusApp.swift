@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct Movie_PlusApp: App {
+    @StateObject var viewModel =  AuthViewModel()
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
+            NavigationView {
+//                //ContentView()
+                FeedView()
+            }
+//            //.environmentObject(viewModel)
+            
+         }
+
     }
 }
