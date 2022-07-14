@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct DetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let movieName: String
     let year: Int
     let image_URL: String
     let description: String
+    
+    var btnBack : some View { Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+            }) {
+                HStack {
+                Image(systemName: "arrow.left") // set image here
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.black)
+                }
+            }
+        }
     
     var body: some View {
         ZStack {
@@ -23,9 +35,11 @@ struct DetailView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .frame(maxWidth: .infinity, maxHeight: 500)
+                .ignoresSafeArea()
                 
                 Spacer()
             }
+            
             
             ScrollView() {
                 VStack {
@@ -45,10 +59,12 @@ struct DetailView: View {
             }
             .frame(maxWidth:.infinity,maxHeight: 700)
             .background(Color.white)
-            .padding(.top,250)
+            .padding(.top,400)
             
             
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
     }
 }
 

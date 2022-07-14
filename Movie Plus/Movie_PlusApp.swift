@@ -19,10 +19,9 @@ struct Movie_PlusApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                //ContentView()
-                FeedView()
+                ContentView()
             }
-//            //.environmentObject(viewModel)
+            .environmentObject(viewModel)
             
          }
 

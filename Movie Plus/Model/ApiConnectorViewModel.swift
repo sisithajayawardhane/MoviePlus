@@ -21,8 +21,8 @@ struct dataStructure: Codable {
 struct movie: Codable, Hashable {
     var id: Int
     var title: String
-    var summary: String
-    //var genres: [String]
+    var description_full: String
+    var genres: [String]
     var small_cover_image: String
     var rating: Double
     var year: Int

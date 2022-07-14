@@ -30,7 +30,7 @@ struct FeedView: View {
             if let data = data {
                 if let response = try? JSONDecoder().decode(APIStructure.self, from: data) {
                     DispatchQueue.main.async {
-                        print(response)
+                        //print(response)
                         self.details = response
                     }
                     return
@@ -57,11 +57,12 @@ struct FeedView: View {
                                     DetailView(movieName: movie.title,
                                                year: movie.year,
                                                image_URL: movie.large_cover_image,
-                                               description: movie.summary)
+                                               description: movie.description_full)
                                 } label: {
                                     MovieCardRowView(
                                         movieName: movie.title,
                                         year: movie.year,
+                                        genre: movie.genres,
                                         image_URL: movie.medium_cover_image)
                                 }
                             }
